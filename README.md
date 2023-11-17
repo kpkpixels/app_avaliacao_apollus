@@ -1,6 +1,7 @@
 # app_avaliacao_apollus
 Aplicação criada para o processo seletivo da Apollus
-Sistema básico para CRUD de usuários, com controle de acesso para usuário Administrador e usuário comum.
+
+Simples sistema de controle de usuários.
 
 Front-end -> Angular 17.0.
 
