@@ -41,8 +41,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
-HELP.md
-target/
+backend/HELP.md
+backend/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
