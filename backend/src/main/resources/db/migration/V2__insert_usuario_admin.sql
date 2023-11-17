@@ -1,0 +1,1 @@
+INSERT INTO tb_usuario (senha, user_login, cargo) VALUES ('$2a$10$JtUgxqTwU.AJXH.QVRw9Au8hiyGKQQAJg8bR6xNdwMaoTiffrK1pS', 'admin', 0)
