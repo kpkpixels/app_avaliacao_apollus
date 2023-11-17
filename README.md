@@ -12,6 +12,8 @@ Instale <a href="https://www.postgresql.org/download/">PostgreSQL 16</a>.
 
 Crie uma base de dados chamada "avaliacao_apollus_db"
 
+Se necessário, altere as configurações de acesso no arquivo "application.properties" da API.
+
 # API
 Versão Java JDK: 17.0
 IDE: <a href="https://spring.io/tools">Spring Tools 4.20.1</a>
