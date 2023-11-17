@@ -29,13 +29,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+frontend/.angular/cache
 .sass-cache/
-/connect.lock
-/coverage
+frontend/connect.lock
+frontend/coverage
 /libpeerconnection.log
 testem.log
-/typings
+frontend/typings
 
 # System files
 .DS_Store
