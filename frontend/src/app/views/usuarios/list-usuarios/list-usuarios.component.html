@@ -6,7 +6,7 @@
       <button mat-raised-button color="primary" (click)="adicionaNovoUsuario()" [disabled]="!verificaAdmin()">Novo Usuário</button>
     </div>
     <div class="filtros">
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="filtroAberto" (opened)="filtroAberto = true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Filtros
@@ -25,6 +25,7 @@
           </mat-select>
         </mat-form-field> 
         <mat-action-row>
+          <button mat-button color="warn" (click)="limparFiltros()">Limpar Filtros</button>
           <button mat-button color="primary" (click)="filtrarUsuarios()">Buscar</button>
         </mat-action-row>
       </mat-expansion-panel>

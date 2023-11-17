@@ -24,6 +24,7 @@ export class ListUsuariosComponent {
       "userLogin":"",
       "cargo":""
     }
+    filtroAberto = false;
   //#endregion
 
   pageSlice = this.usuarios.slice(0, 10);
@@ -88,9 +89,16 @@ export class ListUsuariosComponent {
       const result = await this.usuarioService.buscaPersonalizada(this.filtroUsuario);
       this.usuarios = result.data;
       this.pageSlice = this.usuarios.slice(0, 10);
+      this.filtroAberto = false;
     } catch (error) {
       this.onError("Erro ao carregar usuários.");
     }
+  }
+  limparFiltros(){
+    this.filtroUsuario.userLogin = "";
+    this.filtroUsuario.cargo = "";
+    this.filtroAberto = false;
+    this.getUsuariosCadastrados();
   }
 
   onError(errorMsg:string){
