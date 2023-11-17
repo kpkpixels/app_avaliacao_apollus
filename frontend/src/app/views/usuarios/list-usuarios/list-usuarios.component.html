@@ -1,0 +1,78 @@
+<app-toolbar></app-toolbar>
+
+<div class="container_lista">
+    <h2>{{titulo}}</h2>
+    <div [matTooltipDisabled]="verificaAdmin()" matTooltipPosition="right" matTooltip="Você não tem permissão para esta ação." class="botao_adiciona_novo">
+      <button mat-raised-button color="primary" (click)="adicionaNovoUsuario()" [disabled]="!verificaAdmin()">Novo Usuário</button>
+    </div>
+    <div class="filtros">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filtros
+          </mat-panel-title>
+        </mat-expansion-panel-header>    
+        <mat-form-field>
+          <mat-label>Nome de Login</mat-label>
+          <input matInput [(ngModel)]="filtroUsuario.userLogin">
+        </mat-form-field>    
+        <mat-form-field>
+          <mat-label>Cargo</mat-label>
+          <mat-select [(ngModel)]="filtroUsuario.cargo" name="cargo">                    
+            <mat-option value="">Todos</mat-option>
+            <mat-option value="USER">USER</mat-option>
+            <mat-option value="ADMIN">ADMIN</mat-option>
+          </mat-select>
+        </mat-form-field> 
+        <mat-action-row>
+          <button mat-button color="primary" (click)="filtrarUsuarios()">Buscar</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="tabela_itens">  
+      <table mat-table [dataSource]="pageSlice" class="mat-elevation-z8">    
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let usuario"> {{usuario.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="userLogin">
+          <th mat-header-cell *matHeaderCellDef> Nome de Login </th>
+          <td mat-cell *matCellDef="let usuario"> {{usuario.userLogin}} </td>
+        </ng-container>      
+    
+          <ng-container matColumnDef="cargo">
+            <th mat-header-cell *matHeaderCellDef> Cargo </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.cargo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="edicao">
+            <th class="coluna_acao_listagem" mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let usuario"> 
+                <button mat-flat-button class="botao_acao botao_editar" (click)="this.editUsuario(usuario.id)" [disabled]="verificaUsuarioAtual(usuario.id.toString()) || !verificaAdmin()">
+                    <mat-icon>mode-edit</mat-icon>
+                </button>                
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="delete">
+            <th class="coluna_acao_listagem" mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let usuario"> 
+                <button mat-flat-button class="botao_acao botao_excluir" (click)="deleteUsuario(usuario.id, usuario.userLogin)" [disabled]="verificaUsuarioAtual(usuario.id.toString()) || !verificaAdmin()">
+                    <mat-icon>delete</mat-icon>
+                </button>                
+            </td>
+          </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+      </table>
+    </div>
+    <div class="paginador">
+      <mat-paginator [length]="this.usuarios.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25]"
+        (page)="handlePageEvent($event)">
+      </mat-paginator>
+    </div>
+  </div>

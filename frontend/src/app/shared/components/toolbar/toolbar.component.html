@@ -1,0 +1,37 @@
+<mat-toolbar class="toolbar" color="primary">
+  <mat-icon style="margin-right: 10px">menu</mat-icon>
+    <span>App Avaliação Apollus</span>
+    <span class="example-spacer"></span>
+    <button mat-button (click)="goTo('')">
+      Home
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuUsuarios">
+      Usuários
+    </button>
+    <mat-menu #menuUsuarios="matMenu">      
+      <div matTooltipPosition="right" matTooltip="Você não tem permissão para esta ação." [matTooltipDisabled]="verificaAdmin()">
+        <button mat-menu-item (click)="goTo('usuario/new')" [disabled]="!verificaAdmin()">
+          <span>Novo Usuário</span>
+        </button>
+      </div>
+      <button mat-menu-item (click)="goTo('usuario/list')">
+        <span>Lista de Usuários</span>
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menuPerfil" class="botao_perfil">
+        <mat-icon>arrow_drop_down</mat-icon>
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menuPerfil="matMenu">
+        <button mat-menu-item (click)="goTo('usuario/perfil')"> 
+          <mat-icon>person</mat-icon>
+          <span>Meu Perfil</span>
+        </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon style="color: rgb(190, 69, 69);">logout</mat-icon>
+        <span style="color: rgb(190, 69, 69);">Sair</span>
+      </button> 
+    </mat-menu>
+</mat-toolbar>
+

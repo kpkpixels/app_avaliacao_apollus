@@ -1,0 +1,42 @@
+<app-toolbar></app-toolbar>
+
+
+<div class="container_perfil">
+    <div class="header_peril">
+        <div>
+            <h2>{{titulo}}</h2>
+        </div>
+    </div>
+
+    <form action="">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Nome de Login</mat-label>
+                <input matInput [(ngModel)]="userLogin" name="usuario" maxlength="100" #inputUsuario disabled>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Nova Senha</mat-label>
+                <input matInput [(ngModel)]="senha" name="senha" [type]="hide ? 'password' : 'text'" maxlength="100" #inputSenha>
+                <mat-hint align="end">{{inputSenha.value.length}}/100</mat-hint>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Cargo</mat-label>
+                <mat-select [(ngModel)]="cargo" name="cargo" disabled>                    
+                    <mat-option value="USER">USER</mat-option>
+                    <mat-option value="ADMIN">ADMIN</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="botoes_acao">
+            <button  mat-raised-button class="botao_acao botao_salvar" (click)="editaUsuario()" [disabled]="validaSenha()">Salvar</button>
+        </div>
+    </form>
+</div>

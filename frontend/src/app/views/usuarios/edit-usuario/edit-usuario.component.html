@@ -1,0 +1,59 @@
+<app-toolbar></app-toolbar>
+<div class="container_edit">
+    <div class="header_edicao">
+        <div>
+            <button mat-fab color="primary" (click)="voltarParaListagem()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div>
+            <h2>{{titulo}}</h2>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <form action="">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Nome de Login</mat-label>
+                <input matInput [(ngModel)]="userLogin" name="userLogin" maxlength="100" #inputUsuario required>
+                @if (userLogin == "") {
+                    <mat-error>{{validaNomeUsuario()}}</mat-error>
+                  }
+                <mat-hint align="end">{{inputUsuario.value.length}}/100</mat-hint>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>{{(alterada())}}</mat-label>
+                <input matInput [(ngModel)]="senha" name="senha" [type]="hide ? 'password' : 'text'" maxlength="100" #inputSenha required>
+                @if (senha == "") {
+                    <mat-error>{{validaSenha()}}</mat-error>
+                  }
+                <mat-hint align="end">{{inputSenha.value.length}}/100</mat-hint>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Cargo</mat-label>
+                <mat-select [(ngModel)]="cargo" name="cargo" required>                    
+                    <mat-option value="USER">USER</mat-option>
+                    <mat-option value="ADMIN">ADMIN</mat-option>
+                </mat-select>
+                @if (cargo == "") {
+                    <mat-error>{{validaCargo()}}</mat-error>
+                  }
+            </mat-form-field>
+        </div>
+
+        <div class="botoes_acao">
+            <button *ngIf="id.length > 0" mat-raised-button class="botao_acao botao_excluir" (click)="deleteUsuario()">Excluir</button>
+            <button [disabled]="validaInputs() > 0" mat-raised-button class="botao_acao botao_salvar" (click)="validaAcao()">Salvar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+.container_login{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_login form{
+    width: 50%;
+    text-align: center;
+}
+.container_login .inputs{
+    display: flex;
+    flex-direction: column;
+}
+.container_login .botao_acao{
+    height: 56px;
+}

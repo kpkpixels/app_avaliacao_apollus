@@ -1,0 +1,22 @@
+<app-toolbar></app-toolbar>
+
+<div class="container_home">
+    <h2>Bem Vindo!</h2>
+    <h3>O que deseja fazer?</h3>
+
+    <div class="menus">
+        <div class="menu_usuarios">
+            <div class="titulo">
+                Usuários
+            </div>
+            <div class="botoes">
+                <div [matTooltipDisabled]="verificaAdmin()" matTooltipPosition="right" matTooltip="Você não tem permissão para esta ação.">
+                    <button mat-raised-button color="primary" class="botao_adiciona_novo" (click)="goTo('usuario/new')" [disabled]="!verificaAdmin()">                    
+                        Cadastrar Novo Usuário
+                    </button>
+                </div>                
+                <button mat-raised-button color="primary" class="botao_adiciona_novo" (click)="goTo('usuario/list')">Listar Usuários</button>
+            </div>
+        </div>
+    </div>
+</div>
